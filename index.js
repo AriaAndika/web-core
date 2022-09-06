@@ -4,12 +4,14 @@
 const inp = Input.textField({oninput : '$(\'.common\').setHTML(this.value)'}).setClass('margin-out').setHTML('hihi')
 let ting = 4
 
-let x = new Date()
-
-console.log(time());
 
 
-re(5, e => console.log( rand(20) ) )
+// re(5, e => console.log( hash() ) )
+
+re(5, e => console.log( ran(5) ))
+re(5, e => console.log( hash()) )
+
+
 
 try {
   

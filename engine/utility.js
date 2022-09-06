@@ -106,15 +106,18 @@ const _stash = 'abccdefghiklmnopqrstuvwxyz'
 function hash() {
 	let out = ''
 	for (let i = 0; i < 6; i++) {
-		out += _stash[rand(_stash.length)]
+		out += _stash[ran(_stash.length)]
 	}
 	return out
 }
 function time() {
-	return new Date().getSeconds()
+	return new Date().getSeconds() + 1
 }
-function rand(max, mul = 1, include = false){
-	return (time() * mul * Math.random()) % (max + include)
+function ranf(max, mul = 1){
+	return (time() * mul * Math.random()) % (max + 1)
+}
+function ran(max, include = false) {
+	return Math.floor(Math.random() * time() % (max + include))
 }
 function re(t, call) {
 	for (let i = 0; i < t; i++) {
