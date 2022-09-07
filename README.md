@@ -8,8 +8,13 @@ user can have it own dependencies, but it need to be included
 
 then, the engine will bundle everything together and render it
 
-# feature
-the feature is build for reusability
-- css object
-- component system
-- scene management
+# Feature
+ - create( tag, content, ...classes)
+ -  .setHTML()
+ -  .setClass()
+ -  .setAttrib(...)
+ 
+ - Global CSS
+ - Procedural CSS
+ - Input Element template
+ - --wip-- auto refresh element

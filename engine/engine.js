@@ -1,11 +1,8 @@
-// APPLY CSS
 
-// prefix
-document.head.appendChild(create('loool',''))
 
-let styleElem = document.head.getElementsByTagName('style')[0]
-styleElem = styleElem == null ? document.head.appendChild( document.createElement('style') ) : styleElem
-styles.keys().forEach( e => styleElem.innerText += `.${e}{${styles[e]}}`)// '.' + e + '{' + styles[e] + '}')
+
+
+
 
 
 execute('engine/database.js', function() {
@@ -19,11 +16,22 @@ function OnMainFetched(){
   
   
   
-  // execute('engine/engine.js')
-  Applycss()
+  
+  Applier()
   
 }
 
-function Applycss() {
+function Applier() {
+  // apply css
+  document.head.appendChild(create('loool',''))
+  let styleElem = document.head.getElementsByTagName('style')[0]
+  styleElem = styleElem == null ? document.head.appendChild( document.createElement('style') ) : styleElem
+  styles.keys().forEach( e => styleElem.innerText += `.${e}{${styles[e]}}`)
   
+  // apply key dynamic
+  document.body.addEventListener('input', function() {
+	  
+    _keyevent.forEach( e => e())
+		
+	})
 }

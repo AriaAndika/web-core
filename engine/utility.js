@@ -1,14 +1,12 @@
 // DOM
-function create(tag, content, ...classes){
-	const elem = document.createElement(tag).setHTML(content)
-	classes?.forEach( e => elem.className += e +' ')
+function create(tag, content, classes = '', attrib = {}){
+	const elem = document.createElement(tag).setHTML(content).setClass(classes).setAttrib(attrib)
 	return elem
 }
 // place at the end of body
 function place(...elem) { 
 	try {
 		elem.forEach(e => document.body.appendChild(e) )
-		
 	} catch (error) {
 		console.log(error);
 	}
@@ -29,22 +27,6 @@ function deploy(tag, content, ...classes){
 
 
 
-
-
-// DOM CONST
-class Input{
-	static textField(evOb){
-		const elem = document.createElement('input').setAttrib({type : 'text'})
-		evOb?.keys().forEach( e => elem.setAttribute(e, `${evOb[e]}(this)` ))
-		return elem
-	}
-}
-
-
-
-
-
-
 // OBJECT || NODE
 Object.prototype.keys = function(){
 	return Object.keys(this)
@@ -53,15 +35,18 @@ Node.prototype.setHTML = function(e){
 	this.innerHTML = e
 	return this
 }
-Node.prototype.setClass = function(...className){
-	className.forEach( e => this.className += e)
+Node.prototype.setClass = function(className){
+	this.className = className
 	return this
 }
-Node.prototype.setAttrib = function(atr){
-	atr.keys().forEach( e => this.setAttribute( e, atr[e] ))
+Node.prototype.setAttrib = function(atrOb){
+	atrOb.keys().forEach( e => this.setAttribute( e, atrOb[e] ))
 	return this
 }
-
+Node.prototype.apn = function(...nodes) {
+	nodes.forEach( e => this.appendChild(e))
+	return this
+}
 
 
 

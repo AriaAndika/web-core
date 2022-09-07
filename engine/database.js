@@ -2,12 +2,27 @@ const styles = {}
 const dependencies = []
 const scene = []
 
-const _highdynamic = {
-  
+const _keyevent = []
+
+
+
+
+// TEMPLATE
+// DOM CONST
+class Input{
+	static textField(evOb){
+		const elem = document.createElement('input').setAttrib({type : 'text'})
+		evOb?.keys().forEach( e => elem.setAttribute(e, `${evOb[e]}(this)` ))
+		return elem
+	}
+	static btn(evOb){
+		const elem = document.createElement('input').setAttrib({type : 'button'})
+		evOb?.keys().forEach( e => elem.setAttribute(e, `${evOb[e]}(this)` ))
+		return elem
+	}
 }
 
 
 
-function highDynamic(elem, content){
-  _highdynamic
-}
+
+console.log('database init');

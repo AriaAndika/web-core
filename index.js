@@ -1,16 +1,21 @@
 
 
-
-const inp = Input.textField({oninput : '$(\'.common\').setHTML(this.value)'}).setClass('margin-out').setHTML('hihi')
+const navbar = create('h1', 'Title', 'mar-0 bg-3 col-7 pad-2')
+const inp = Input.textField().setClass('mar-2').setHTML('hihi')
+const logger = create('div', 'helo', 'mar-2 round-1 bg-2 pad-2 col-7').apn( Input.btn().setAttrib({value : 'X'}).setClass('fl-rg') )
 let ting = 4
 
 
-
-// re(5, e => console.log( hash() ) )
-
-re(5, e => console.log( ran(5) ))
-re(5, e => console.log( hash()) )
-
+const pallete = [
+  '#1a1c2c',
+  '#29366f',
+  '#3b5dc9',
+  '#41a6f6',
+  '#73eff7',
+  '#f4f4f4',
+  '#0000',
+  '#ffff'
+]
 
 
 try {
@@ -22,11 +27,27 @@ try {
 }
 
 
-
-deploy('div', 'helo', 'common', 'beeg')
-place( inp )
+place( navbar, inp, logger )
 
 
+
+styles.navbar = 'background-color:#46acff; width:100%; '
 styles.common = 'color:red; background-color : blue;'
 styles.beeg = 'font-size: 50px;'
-styles['margin-out'] = 'margin : 20px;'
+
+
+
+re(5, e => {
+  styles[`mar-${e}`] = `margin: ${e*8}px`
+  styles[`pad-${e}`] = `padding: ${e*8}px`
+  styles[`round-${e}`] = `border-radius: ${e*8}px`
+})
+re(pallete.length, e => {
+  styles[`bg-${e}`] = `background-color:${pallete[e]}`
+  styles[`col-${e}`] = `color : ${pallete[e]}`
+  
+})
+
+
+styles['fl-lf'] = 'float:left;'
+styles['fl-rg'] = 'float:right;'
