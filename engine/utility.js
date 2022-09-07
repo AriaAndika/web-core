@@ -127,3 +127,10 @@ function re(t, call) {
 		call(i)
 	}
 }
+function ret(t, call) {
+	const o = []
+	for (let i = 0; i < t; i++) {
+		o.push( call(i) )
+	}
+	return o
+}

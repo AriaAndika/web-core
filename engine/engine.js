@@ -31,7 +31,8 @@ function Applier() {
     const isRender = scenes[e].autoRender || true
     
     if (isRender){
-      const wrap = crt('div')      
+      const wrap = crt(scenes[e].tag ||'div').cls( scenes[e].classes || 'grid-main');
+            
       scenes[e].elem.forEach( e => {
         wrap.apn(e)
       }) 
@@ -48,9 +49,9 @@ function Applier() {
   styles.keys().forEach( e => styleElem.innerText += `.${e}{${styles[e]}}`)
   
   // apply key dynamic
-  document.body.addEventListener('input', function() {
+  // document.body.addEventListener('input', function() {
 	  
-    _keyevent.forEach( e => e())
+  //   _keyevent.forEach( e => e())
 		
-	})
+	// })
 }
