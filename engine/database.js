@@ -37,6 +37,10 @@ class Input{
 		evOb?.keys().forEach( e => elem.setAttribute(e, evOb[e] + (addThis ? '(this)' : '') ))
 		return elem
 	}
+	static dateField(){
+		const elem = document.createElement('input').atr({type : 'date'})
+		return elem
+	}
 }
 
 

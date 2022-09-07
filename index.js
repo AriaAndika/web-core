@@ -8,6 +8,7 @@ const submit = Input.btn({onclick : 'add'}).atr({value : 'Submit'})
 const navbar = crt('h1', 'Title', 'mar-0 bg-2 col-7 pad-2')
 const inp = Input.textField().cls('mar-2').htm('hihi')
 
+const targetDate = Input.dateField()
 const bug = crt('div', 'bugger', 'bg-3')
 
 //* FUNC
@@ -18,10 +19,11 @@ function add() {
 }
 
 //* MAIN
-// TODO make better scene management
+// TODO make better scene manager
 
 scenes.menu = {
-  classes : 'grid-main ib',
+  autoRender : true,
+  classes : 'grid-main di',
   elem : ret(5,e =>  Input.btn().atr({value : `${e}. Other`}).cls('btn-classic tr-1') )
   // tag : 'span'
 }
@@ -47,4 +49,4 @@ styles['grid-other'] = 'width: 400px;resize: both;overflow: auto;'
 styles['grid-main'] = 'width: 200px;height: 100vh;resize: horizontal;overflow: auto;border: 2px solid black'
 
 document.body.style.backgroundColor = '#fafa'
-place( navbar, inp, submit, bug )
+// place( navbar, inp, submit, bug )
