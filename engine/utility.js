@@ -8,25 +8,17 @@ function place(...elem) {
 	try {
 		elem.forEach(e => document.body.appendChild(e) )
 	} catch (error) {
-		console.log(error);
+		console.log('error in placing element\n',error);
 	}
 }
-// create and place it immediately
-function deploy(tag, content, ...classes){
-	const elem = document.createElement(tag).htm(content)
-	classes?.forEach( e => elem.className += e +' ')
-	document.body.appendChild(elem)
-	// return elem
+function inp(inputType,atrOb = null){
+	return crt('input').atr({type : inputType}).atr(atrOb)
 }
-
-
-
-
-// SCENE
-// function scene(idx, ...elem) {
-// 	elem.forEach( e => scenes[''] )
-// 	scenes[idx] 
-// }
+// create and place it immediately
+function deploy(tag, content, classes){
+	const elem = document.createElement(tag).htm(content)
+	document.body.appendChild( crt( tag,content,classes ) )
+}
 
 
 
@@ -46,26 +38,31 @@ Node.prototype.txt = function(e, add = false){
 	this.innerText = (add ? this.innerText + e : e)
 	return this
 }
-Node.prototype.cls = function(className){
-	this.className = className
+Node.prototype.cls = function(classes, add = false){
+	this.className = (add ? this.className + classes : classes)
 	return this
 }
+Node.prototype.cln = function(deep = true) {
+	return this.cloneNode(deep)
+}
 Node.prototype.atr = function(atrOb){
-	atrOb.keys().forEach( e => this.setAttribute( e, atrOb[e] ))
+	atrOb?.keys().forEach( e => this.setAttribute( e, atrOb[e] ))
 	return this
 }
 Node.prototype.apn = function(...nodes) {
 	nodes.forEach( e => this.appendChild(e))
 	return this
 }
-Node.prototype.cln = function(deep = true) {
-	return this.cloneNode(deep)
-}
 Node.prototype.del = function() {
 	const holder = this
 	this.outerHTML = ''
 	return holder
 }
+Node.prototype.on = function(ev, call) {
+	this.addEventListener(ev, call)
+	return this
+}
+
 
 
 // FILE SYSTEM
@@ -73,9 +70,6 @@ function read(path, callback){
   fetch(path)
   .then(x => x.text())
   .then(e => callback?.(e))
-}
-function call(js) {
-	document.body.appendChild( document.createElement('script').htm(e) )
 }
 function execute(path, callback) {
 	fetch(path)
@@ -133,4 +127,10 @@ function ret(t, call) {
 		o.push( call(i) )
 	}
 	return o
+}
+
+
+// MATH
+function lerp(a,b,t) {
+	return a + (b - a) * t
 }

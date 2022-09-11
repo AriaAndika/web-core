@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            border: 1px solid black;
+            padding: 20px;
+        }
+        .db{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <input type="text" class="mar2 db" id="title" placeholder="judul..">
+        <input type="number" class="mar2 db" id="deadline" placeholder="deadline..">
+        <textarea class="mar2 db" id="" cols="25" rows="10" placeholder="detail.."></textarea>
+        
+        <input type="button" value="done" onclick="onSubmit(this.parentElement)">
+    </div>
+    
+    
+    
+    <script>
+        function onSubmit(elem){
+            // get info
+            const info = [
+                elem.children[0].value,
+                elem.children[1].value - 2,
+                elem.children[2].value
+            ]
+            while (elem.firstChild) {
+                elem.firstChild.remove()
+            }
+            for (let i = 0; i < 3; i++) {
+                const ch = document.createElement('div')
+                ch.innerHTML = info[i]
+                elem.appendChild( ch )
+            }
+            document.createElement('input')
+            elem.appendChild(  )
+        }
+        function edit(elem) {
+            
+        }
+    </script>
+</body>
+</html>
